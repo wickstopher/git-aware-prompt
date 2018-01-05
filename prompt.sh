@@ -21,7 +21,11 @@ find_git_dirty() {
   fi
 }
 
-PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
+get_current_dir() {
+  current_dir="${PWD/#$HOME/~}"
+}
+
+PROMPT_COMMAND="find_git_branch; find_git_dirty; get_current_dir; $PROMPT_COMMAND"
 
 # Default Git enabled prompt with dirty state
 # export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
